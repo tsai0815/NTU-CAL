@@ -29,3 +29,7 @@ def aboutus(request):
 def account_center(request):
     template = loader.get_template('account-center.html')
     return HttpResponse(template.render())
+
+def calculus_textbook_qa(request):
+    template = loader.get_template('calculus-textbook-qa.html')
+    return HttpResponse(template.render())

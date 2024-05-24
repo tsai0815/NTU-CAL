@@ -8,5 +8,5 @@ urlpatterns = [
     path('buy-coffee/', views.buy_coffee, name='buy-coffee'),
     path('aboutus/', views.aboutus, name='aboutus'),
     path('account-center/', views.account_center, name='account-center'),
-    # path('forum/', views.forum, name='forum'),
+    path('calculus-textbook-qa/', views.calculus_textbook_qa, name='calculus-textbook-qa'),
 ]
