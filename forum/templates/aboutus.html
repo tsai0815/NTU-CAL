@@ -1,1 +1,242 @@
-About us: We are just some capoybaras from a zoo.
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8 " />
+    <meta name="discription" content="aboutus_網頁新增" />
+    <meta name="author" content="james" />
+    <meta name="viewport" contnent="width=device-width, initial-scale=1.0 " />
+    <link rel="stylesheet" href="{% static 'css/aboutus_styles.css' %}">
+</head>
+
+<body>
+    <!-- 側導覽列 -->
+    <div class="sidebar" style="text-align:center">
+        <h3>Members</h3>
+        <nav>
+            <ul>
+                <li><a href="#蔡正新">蔡正新</a></li>
+                <li><a href="#賴侑辰">賴侑辰</a></li>
+                <li><a href="#吳威錡">吳威錡</a></li>
+                <li><a href="#劉柏鋒">劉柏鋒</a></li>
+                <li><a href="#傅政文">傅政文</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <!-- 表格內容區域 -->
+    <div class="content">
+        <div class="full-width-table">
+            <table>
+                <caption> About us </caption>
+                <tr>
+                    <th>照片</th>
+                    <th>個人資料</th>
+                </tr>
+
+
+                <tr>
+                    <td id="蔡正新" width="200px">
+
+                        <img class="profile-image" src="{% static 'images/capybara.png' %}" alt="missing!" />
+
+                    </td>
+                    <td style=" padding: 10px;">
+                        <div class="blockquote-container">
+                            <blockquote>
+                                <p style=" font-size: 20px;"><b><i> 喜歡泡溫泉，頭上通常有橘子</i> </b> </p>
+                                <footer>
+
+                                    <a href="https://github.com/tsai0815" target="_blank">
+                                        <img src="{% static 'images/github_icon.png' %}" alt="Github"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+                                    <a href="https://www.facebook.com/profile.php?id=100009567113015" target="_blank">
+                                        <img src="{% static 'images/fb_icon.png' %}" alt="Facebook"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+                                    <a href="mailto:b12902140@ntu.edu.tw" target="_blank">
+                                        <img src="{% static 'images/gmail.png' %}" alt="Gmail"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+
+                                </footer>
+                            </blockquote>
+                        </div>
+
+                        <p><b>姓名: </b>蔡正新</p>
+                        <p><b>生日: </b>東漢12年</p>
+                        <p><b>MBTI: </b>ADHD</p>
+                        <p><b>真實身分:</b> 卡皮巴拉</p>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td id="賴侑辰" width="200px">
+
+                        <img class="fill-image" style="height: 300px; width: auto;"
+                            src="{% static 'images/danielle.jpg' %}" alt="missing!" />
+                    </td>
+                    <td style=" padding: 10px;">
+
+                        <div class="blockquote-container">
+                            <blockquote>
+                                <p style=" font-size: 20px;"><b><i> 波妞喜歡吃火腿 </i> </b> </p>
+                                <footer>
+
+                                    <a href="https://github.com/lieDownMan" target="_blank">
+                                        <img src="{% static 'images/github_icon.png' %}" alt="Github"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+                                    <a href="https://www.facebook.com/youchen.thomas.lai/" target="_blank">
+                                        <img src="{% static 'images/fb_icon.png' %}" alt="Facebook"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+                                    <a href="mailto:b12902052@ntu.edu.tw" target="_blank">
+                                        <img src="{% static 'images/gmail.png' %}" alt="Gmail"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+
+                                </footer>
+                            </blockquote>
+                        </div>
+
+                        <p><b>姓名:</b>賴侑辰</p>
+                        <p><b>生日:</b>3月</p>
+                        <p><b>物種:</b>章魚</p>
+                        <p><b>吃藥時間:</b> 三餐飯後</p>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td id="吳威錡" width="200px">
+
+                        <img class="profile-image" src="{% static 'images/kabigon.jpg' %}" alt="" />
+
+                    </td>
+                    <td style=" padding: 10px;">
+
+                        <div class="blockquote-container">
+                            <blockquote>
+                                <p style=" font-size: 20px;"><b><i>去年七月開始把養小孩當興趣的在職生</i> </b> </p>
+                                <footer>
+                                    <a href="https://github.com/weichiwu" target="_blank">
+                                        <img src="{% static 'images/github_icon.png' %}" alt="Github"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+                                    <a href="mailto:p12922002@ntu.edu.tw" target="_blank">
+                                        <img src="{% static 'images/gmail.png' %}" alt="Gmail"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+                                </footer>
+                            </blockquote>
+                        </div>
+
+                        <p><b>姓名:</b>吳威錡</p>
+                        <p><b>生日:</b>9月</p>
+                        <p><b>起床時間:</b>05:30AM</p>
+                        <p><b>目前工作:</b>在大公司的小單位打雜</p>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td id="劉柏鋒" width="200px">
+
+                        <img class="profile-image" src="{% static 'images/paimon.png' %}" alt="" />
+
+                    </td>
+                    <td style=" padding: 10px;">
+                        <div class="blockquote-container">
+                            <blockquote>
+                                <p style=" font-size: 20px;"><b><i> 原神，啟動！(?)</i> </b> </p>
+                                <footer>
+
+                                    <a href="https://github.com/PofengLiu1022" target="_blank">
+                                        <img src="{% static 'images/github_icon.png' %}" alt="Github"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+                                    <a href="https://www.facebook.com/kenny.liu.1022/" target="_blank">
+                                        <img src="{% static 'images/fb_icon.png' %}" alt="Facebook"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+                                    <a href="mailto:b11902081@ntu.edu.tw" target="_blank">
+                                        <img src="{% static 'images/gmail.png' %}" alt="Gmail"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+
+                                </footer>
+                            </blockquote>
+                        </div>
+
+                        <p><b>姓名: </b>劉柏鋒</p>
+                        <p><b>生日: </b>10月</p>
+                        <p><b>MBTI: </b>POOR</p>
+                        <p><b>真相：</b>其實我沒有喜歡玩原神...</p>
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td id="傅政文" width="200px">
+
+                        <img class="profile-image" src="{% static 'images/8pefimo5gdg91.jpg' %}" alt="" />
+
+                    </td>
+                    <td style=" padding: 10px;">
+                        <div class="blockquote-container">
+                            <blockquote>
+                                <p style=" font-size: 20px;"><b><i> 不務正業的旁聽仔</i> </b> </p>
+                                <footer>
+
+                                    <a href="https://github.com/jamesbaxter0424" target="_blank">
+                                        <img src="{% static 'images/github_icon.png' %}" alt="Github"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+                                    <a href="https://www.facebook.com/profile.php?id=100001358213599&mibextid=LQQJ4d"
+                                        target="_blank">
+                                        <img src="{% static 'images/fb_icon.png' %}" alt="Facebook"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+                                    <a href="mailto:awenfu0424@gmail.com" target="_blank">
+                                        <img src="{% static 'images/gmail.png' %}" alt="Gmail"
+                                            style="width: 20px; height: 20px; margin:0 5px;">
+                                    </a>
+
+                                </footer>
+                            </blockquote>
+                        </div>
+
+                        <p><b>姓名: </b>傅政文</p>
+                        <p><b>星座: </b>4月</p>
+                        <p><b>興趣: </b>喝咖啡</p>
+                        <p><b>歡迎小額捐款:</b>(700)0311188 0320664</p>
+
+                    </td>
+                </tr>
+
+
+
+
+
+            </table>
+
+        </div>
+
+        <div style="text-align:center">
+            <br><br><br>
+            <input type="button" onclick="location.href='../'" value="回到首頁"></input>
+            <br><br><br>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
