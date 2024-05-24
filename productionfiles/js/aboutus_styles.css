@@ -1,0 +1,98 @@
+
+
+.sidebar {
+    width: 110px; /* 側導覽列的寬度 */
+    height: 100vh; /* 側導覽列的高度 */
+    background-color: #f0f0f0; /* 側導覽列的背景色 */
+    float: left; /* 使側導覽列靠左浮動 */
+    position: fixed;
+}
+
+.content {
+    margin-left: 110px; /* 將內容區域向右偏移，以容納側導覽列 */
+}
+
+
+.full-width-table table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+.full-width-table caption{
+    background-color: #b6e1ca;
+    color:#062b17;
+    font-size: 20px;
+    font-weight: bold; 
+}
+
+.full-width-table td {
+    border: 1px solid #000;
+    text-align: left; /* 靠近左邊 */
+    vertical-align: top; /* 靠近上方 */
+
+}
+        
+.full-width-table th{
+    border: 1px solid #000;
+    background-color: #062b17;
+    color:rgb(255, 255, 255);
+
+}
+
+.blockquote-container {
+    padding: 8px;
+    background-color: #f9f9f9;
+    border-left: 6px solid #ccc;
+    margin-bottom: 10px;
+}
+
+
+.profile-image {
+
+    max-width: 100%; /* 讓圖片填滿父容器的寬度 */
+    max-height: 100%; /* 讓圖片填滿父容器的高度 */
+    object-fit:  cover; /* 保持圖片比例並填滿容器 */
+}
+
+nav > ul {
+    background-color: #f0f0f0;
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+nav a {
+    color: inherit;
+    display: block; 
+    padding: 10px;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #666666;
+    color: #f0f0f0;
+}
+
+input[type=button], select {
+    border: 2px solid #4c484822;
+    background-color: #4c484822;
+    border-radius: 4px;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="button"]:hover {
+    background-color: rgb(50, 50, 50); /* 设置按钮在悬停时的背景颜色为红色 */
+    color: white; /* 设置按钮在悬停时的文本颜色为白色 */
+}
+
+/* remove the annoying black line between icons */
+a:-webkit-any-link 
+{
+  text-decoration: none;
+}
+
+
