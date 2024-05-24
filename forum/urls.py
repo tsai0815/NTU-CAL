@@ -7,5 +7,6 @@ urlpatterns = [
     path('topics-detail/', views.topics_detail, name='topics-detail'),
     path('buy-coffee/', views.buy_coffee, name='buy-coffee'),
     path('aboutus/', views.aboutus, name='aboutus'),
+    path('account-center/', views.account_center, name='account-center'),
     # path('forum/', views.forum, name='forum'),
 ]

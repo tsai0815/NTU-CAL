@@ -25,3 +25,7 @@ def buy_coffee(request):
 def aboutus(request):
     template = loader.get_template('aboutus.html')
     return HttpResponse(template.render())
+
+def account_center(request):
+    template = loader.get_template('account-center.html')
+    return HttpResponse(template.render())
