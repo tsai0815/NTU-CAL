@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		const newPost = document.createElement('div'); 
 		newPost.className = 'post-box'; 
 		newPost.innerHTML = ` 
-			<h1 class="post-title" data-title="${postTitle}"
+			<h1 class="post-title" data-title="${postTitle}" 
 		data-date="${formattedDate}"
 		data-description="${postDescription}"> 
 			${postTitle}</h1><br> 
