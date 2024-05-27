@@ -14,7 +14,7 @@
         <nav>
             <ul>
                 <li class="nav1"><a href="/">Home</a></li>
-                <li class="nav1"><a href="#" id="createPostBtn">Create Post</a></li>
+                <li class="nav1"><a href="{% url "calculus-ask" %}" id="createPostBtn">Ask a question</a></li>
             </ul>
         </nav>
     </header>
@@ -22,8 +22,9 @@
         <div id="createPostModal" class="modal">
             <div class="modal-content">
                 <span class="close" id="closeModal">×</span>
-                <h2>Create a New Post</h2>
-                <form id="postForm">
+                
+                {% comment %} <h2>Create a New Post</h2> {% endcomment %}
+                {% comment %} <form id="postForm" method="post">
                     <div class="upper">
                         <div class="title">
                             <label class="postheading" for="postTitle">Title</label>
@@ -37,7 +38,7 @@
                     <label class="postheading" for="postDescription">Description</label>
                     <textarea class="postDescription" id="postDescription" name="postDescription" autocomplete="off" required></textarea>
                     <button type="submit" id="postSubmitBtn" class="postSubmitBtn">Post</button>
-                </form>
+                </form> {% endcomment %}
             </div>
         </div>
         <!-- Detail Modal -->
