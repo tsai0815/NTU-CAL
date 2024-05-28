@@ -1,10 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
+from .models import Question
+from .forms import QuestionForm
 
-# def forum(request):
-#     template = loader.get_template('index.html')
-#     return HttpResponse(template.render())
 
 def main(request):
     template = loader.get_template('main.html')
@@ -34,6 +33,26 @@ def calculus(request):
     template = loader.get_template('calculus.html')
     return HttpResponse(template.render())
 
+
+def calculus_ask(request):    
+    template = loader.get_template('calculus-ask.html')
+    form = QuestionForm(request.POST or None)
+
+    # form = QuestionForm()
+    
+    if form.is_valid():
+        obj = Question.objects.create(
+            title = form.cleaned_data.get('title'),
+            category = form.cleaned_data.get('category'),
+            description = form.cleaned_data.get('description')
+        )
+        return HttpResponse('OK')
+
+    context = {
+        'form': form
+    }
+    return render(request, "calculus-ask.html", context)
+  
 def login(request):
     template = loader.get_template('login.html')
     return HttpResponse(template.render())

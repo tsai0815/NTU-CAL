@@ -11,8 +11,8 @@ urlpatterns = [
     path('aboutus/', views.aboutus, name='aboutus'),
     path('account-center/', views.account_center, name='account-center'),
     path('calculus/', views.calculus, name='calculus'),
+    path('calculus/ask/', views.calculus_ask, name='calculus-ask'),
     path('login/', views.login, name='login'),
-    # path('forum/', views.forum, name='forum'),
 ]
 
 if settings.DEBUG:
