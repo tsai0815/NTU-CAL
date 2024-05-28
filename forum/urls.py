@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from . import views
 
@@ -9,5 +11,9 @@ urlpatterns = [
     path('aboutus/', views.aboutus, name='aboutus'),
     path('account-center/', views.account_center, name='account-center'),
     path('calculus/', views.calculus, name='calculus'),
+    path('login/', views.login, name='login'),
     # path('forum/', views.forum, name='forum'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

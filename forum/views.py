@@ -33,3 +33,7 @@ def account_center(request):
 def calculus(request):
     template = loader.get_template('calculus.html')
     return HttpResponse(template.render())
+
+def login(request):
+    template = loader.get_template('login.html')
+    return HttpResponse(template.render())
