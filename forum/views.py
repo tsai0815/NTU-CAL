@@ -52,3 +52,7 @@ def calculus_ask(request):
         'form': form
     }
     return render(request, "calculus-ask.html", context)
+  
+def login(request):
+    template = loader.get_template('login.html')
+    return HttpResponse(template.render())
