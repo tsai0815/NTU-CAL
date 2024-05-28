@@ -3,33 +3,32 @@
 
 <head>
     <meta charset="UTF-8 " />
-    <meta name="discription" content="登入頁面" />
+    <meta name="description" content="登入頁面" />
     <meta name="author" content="weichiwu" />
-    <meta name="viewport" contnent="width=device-width, initial-scale=1.0 " />
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 </head>
 
 <body>
-    <!-- <h2>NTU Ask Login</h2> -->
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form id="signUpForm">
                 <h1>Create Account</h1>
                 <span>use your ntu email for registration</span>
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button>Sign Up</button>
+                <input type="email" id="signUpEmail" placeholder="Email" />
+                <input type="password" id="signUpPassword" placeholder="Password" />
+                <input type="text" id="signUpName" placeholder="Name" />
+                <button type="button" id="signUpButton">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form id="signInForm">
                 <h1>Sign in</h1>
                 <span>use your NTU email to login</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="email" id="signInEmail" placeholder="Email" />
+                <input type="password" id="signInPassword" placeholder="Password" />
                 <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                <button type="button" id="signInButton">Sign In</button>
             </form>
         </div>
         <div class="overlay-container">
@@ -47,7 +46,8 @@
             </div>
         </div>
     </div>
-    <script src="{% static " js/login.js" %}"></script>
+    <!-- <script src="{% static 'js/login.js' %}"></script> -->
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
 
 </body>
 
