@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .models import Question
-from .forms import QuestionForm
+from .models import Question, Solution
+from .forms import QuestionForm, SolutionForm
 
 
 def main(request):
@@ -32,14 +32,22 @@ def account_center(request):
 def calculus(request):
     questions = Question.objects.all().values()
 
-    return render(request, 'calculus.html', {'questions': questions})
+    form = SolutionForm(request.POST)
+    if form.is_valid():
+        print("-----the form is valid----")
+        obj = Solution.objects.create(
+            description = form.cleaned_data.get('description')
+        )
+        return redirect('calculus')
+    else:
+        print(form.errors)
+
+    return render(request, 'calculus.html', {'questions': questions, 'form': form})
 
 
 def calculus_ask(request):    
-    template = loader.get_template('calculus-ask.html')
+    # template = loader.get_template('calculus-ask.html')
     form = QuestionForm(request.POST or None)
-
-    # form = QuestionForm()
     
     if form.is_valid():
         obj = Question.objects.create(
