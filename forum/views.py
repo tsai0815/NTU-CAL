@@ -46,7 +46,9 @@ def calculus_ask(request):
             category = form.cleaned_data.get('category'),
             description = form.cleaned_data.get('description')
         )
-        return HttpResponse('OK')
+        redirectTemplate = loader.get_template('calculus.html')
+        return HttpResponse(redirectTemplate.render())
+
 
     context = {
         'form': form
