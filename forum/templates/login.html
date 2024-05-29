@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <meta charset="UTF-8 " />
+    <meta charset="UTF-8" />
     <meta name="description" content="登入頁面" />
     <meta name="author" content="weichiwu" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 
 <body>
@@ -15,9 +15,10 @@
             <form id="signUpForm">
                 <h1>Create Account</h1>
                 <span>use your ntu email for registration</span>
+                <input type="text" id="signUpName" placeholder="Name" name="name_fake" />
                 <input type="email" id="signUpEmail" placeholder="Email" />
+                <span id="signUpEmailError" class="error-message"></span>
                 <input type="password" id="signUpPassword" placeholder="Password" />
-                <input type="text" id="signUpName" placeholder="Name" />
                 <button type="button" id="signUpButton">Sign Up</button>
             </form>
         </div>
@@ -26,6 +27,7 @@
                 <h1>Sign in</h1>
                 <span>use your NTU email to login</span>
                 <input type="email" id="signInEmail" placeholder="Email" />
+                <span id="signInEmailError" class="error-message"></span>
                 <input type="password" id="signInPassword" placeholder="Password" />
                 <a href="#">Forgot your password?</a>
                 <button type="button" id="signInButton">Sign In</button>
@@ -46,9 +48,7 @@
             </div>
         </div>
     </div>
-    <!-- <script src="{% static 'js/login.js' %}"></script> -->
-    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
-
+    <script src="{% static 'js/login.js' %}"></script>
 </body>
 
 </html>
