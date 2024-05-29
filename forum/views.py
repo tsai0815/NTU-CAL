@@ -30,13 +30,14 @@ def account_center(request):
     return HttpResponse(template.render())
 
 def calculus(request):
-    questions = Question.objects.all().values()
+    questions = Question.objects.all()
 
     form = SolutionForm(request.POST)
     if form.is_valid():
         print("-----the form is valid----")
         obj = Solution.objects.create(
-            description = form.cleaned_data.get('description')
+            description = form.cleaned_data.get('description'),
+            question = form.cleaned_data.get('question')
         )
         return redirect('calculus')
     else:
