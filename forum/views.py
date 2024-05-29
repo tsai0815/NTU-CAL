@@ -30,8 +30,9 @@ def account_center(request):
     return HttpResponse(template.render())
 
 def calculus(request):
-    template = loader.get_template('calculus.html')
-    return HttpResponse(template.render())
+    questions = Question.objects.all().values()
+
+    return render(request, 'calculus.html', {'questions': questions})
 
 
 def calculus_ask(request):    
@@ -46,12 +47,11 @@ def calculus_ask(request):
             category = form.cleaned_data.get('category'),
             description = form.cleaned_data.get('description')
         )
-        redirectTemplate = loader.get_template('calculus.html')
-        return HttpResponse(redirectTemplate.render())
+        return redirect('calculus')
 
 
     context = {
-        'form': form
+        'form': form,
     }
     return render(request, "calculus-ask.html", context)
   
