@@ -19,17 +19,38 @@
         </nav>
     </header>
 
-    <h2>Questions</h2>
+    <h2 class="logo">Questions</h2>
     <ul>
         {% for q in questions %}
+            <div class="post-box">
             <li>
                 <h3>Title: {{ q.title }}</h3>
-                <h4>Category: {{ q.category }}</h4>
+                <h3>Category: {{ q.category }}</h3>
+                <h3>Description: </h3>
                 <p>{{q.description}}</p>
                 <br>
                 <p>Published Date: {{ q.published_date|date:"Y-m-d" }}</p>
-                  
+                <br>
+                <h3>Replies:</h3>
+                <ul>
+                    {% for sol in q.solutions.all %}
+                        <div class="post-box">
+                        <li>{{ sol.description }}</li>
+                        </div>
+                    {% endfor %}
+                </ul>
+                <br>
+                <hr>
+                <h3>Your answer:</h3>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% comment %} Automatically assign the question for the solution to point to{% endcomment %}
+                    <input type="hidden" name="question_id" value="{{ q.id }}">
+                    <input type="submit" value="reply">
+                </form>
             </li>
+            </div>
         {% endfor %}
     </ul>
 
