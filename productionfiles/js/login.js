@@ -44,7 +44,7 @@ document.getElementById('signInButton').addEventListener('click', () => {
         if (storedUser && storedUser.email === email && storedUser.password === password) {
             alert('Sign in successful');
             // Redirect to account-center.html
-            window.location.href = "/account-center";
+            // window.location.href = "/account-center";
         } else {
             alert('Invalid email or password');
         }
