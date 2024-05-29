@@ -22,9 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	const detailDescription = 
 		document.getElementById('detailDescription'); 
 
-	createPostBtn.addEventListener('click', function () { 
-		createPostModal.style.display = 'flex'; 
-	}); 
+	// close this function temporarily
+	// createPostBtn.addEventListener('click', function () { 
+	// 	createPostModal.style.display = 'flex'; 
+	// }); 
 
 	closeModal.addEventListener('click', function () { 
 		// Add fadeOut class 

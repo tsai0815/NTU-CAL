@@ -18,13 +18,32 @@
             </ul>
         </nav>
     </header>
-    <main class="post-container">
+
+    <h2>Questions</h2>
+    <ul>
+        {% for q in questions %}
+            <li>
+                <h3>Title: {{ q.title }}</h3>
+                <h4>Category: {{ q.category }}</h4>
+                <p>{{q.description}}</p>
+                <br>
+                <p>Published Date: {{ q.published_date|date:"Y-m-d" }}</p>
+                  
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+
+
+    {% comment %} <main class="post-container">
         <div id="createPostModal" class="modal">
             <div class="modal-content">
                 <span class="close" id="closeModal">×</span>
                 
-                {% comment %} <h2>Create a New Post</h2> {% endcomment %}
-                {% comment %} <form id="postForm" method="post">
+                <h2>Create a New Post</h2>
+                <form id="postForm" method="post">
                     <div class="upper">
                         <div class="title">
                             <label class="postheading" for="postTitle">Title</label>
@@ -38,7 +57,7 @@
                     <label class="postheading" for="postDescription">Description</label>
                     <textarea class="postDescription" id="postDescription" name="postDescription" autocomplete="off" required></textarea>
                     <button type="submit" id="postSubmitBtn" class="postSubmitBtn">Post</button>
-                </form> {% endcomment %}
+                </form>
             </div>
         </div>
         <!-- Detail Modal -->
@@ -51,7 +70,7 @@
             </div>
         </div>
         <div id="postCreatedMessage" class="post-message">Post created successfully!</div>
-    </main>
+    </main> {% endcomment %}
     <!-- JavaScript file linked -->
     <script src="{% static 'js/calculus.js' %}"></script>
 </body>
