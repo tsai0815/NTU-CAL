@@ -34,11 +34,14 @@ def calculus(request):
 
     form = SolutionForm(request.POST)
     if form.is_valid():
-        print("-----the form is valid----")
-        obj = Solution.objects.create(
-            description = form.cleaned_data.get('description'),
-            question = form.cleaned_data.get('question')
-        )
+        # obj = Solution.objects.create(
+        #     description = form.cleaned_data.get('description'),
+        #     question = form.cleaned_data.get('question')
+        # )
+        solution = form.save(commit=False)
+        question_id = request.POST.get('question_id')
+        solution.question_id = question_id
+        solution.save()
         return redirect('calculus')
     else:
         print(form.errors)

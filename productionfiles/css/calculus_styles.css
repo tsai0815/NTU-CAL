@@ -348,7 +348,7 @@ footer {
 @media only screen and (max-width: 550px) { 
 
 	li { 
-		display: inline; 
+		display: block; 
 		padding: 5px; 
 	} 
 

@@ -34,7 +34,9 @@
                 <h3>Replies:</h3>
                 <ul>
                     {% for sol in q.solutions.all %}
+                        <div class="post-box">
                         <li>{{ sol.description }}</li>
+                        </div>
                     {% endfor %}
                 </ul>
                 <br>
@@ -44,7 +46,7 @@
                     {% csrf_token %}
                     {{ form.as_p }}
                     {% comment %} Automatically assign the question for the solution to point to{% endcomment %}
-                    {% comment %} <input type="hidden" name="question_id" value="{{ q.id }}"> {% endcomment %}
+                    <input type="hidden" name="question_id" value="{{ q.id }}">
                     <input type="submit" value="reply">
                 </form>
             </li>

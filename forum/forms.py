@@ -8,9 +8,9 @@ class QuestionForm(forms.ModelForm):
         fields = '__all__'
 
 class SolutionForm(forms.ModelForm):
-    
+
     class Meta:
         model = Solution
-        fields = '__all__'
+        fields = ['description'] 
 
 
