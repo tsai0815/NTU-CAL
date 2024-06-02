@@ -22,10 +22,24 @@ document.getElementById('signUpButton').addEventListener('click', () => {
         const name = document.getElementById('signUpName').value;
         const password = document.getElementById('signUpPassword').value;
 
-        // Store user data in sessionStorage
-        sessionStorage.setItem('user', JSON.stringify({ name, email, password }));
-        alert('Sign up successful. Please sign in.');
-        container.classList.remove("right-panel-active");
+        fetch('/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({ signup: true, username: name, email: email, password1: password, password2: password })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Sign up successful. Please sign in.');
+                    container.classList.remove("right-panel-active");
+                } else {
+                    alert('Sign up failed: ' + JSON.stringify(data.errors));
+                }
+            })
+            .catch(error => console.error('Error:', error));
     }
 });
 
@@ -39,15 +53,25 @@ document.getElementById('signInButton').addEventListener('click', () => {
     } else {
         emailError.textContent = '';
         const password = document.getElementById('signInPassword').value;
-        const storedUser = JSON.parse(sessionStorage.getItem('user'));
 
-        if (storedUser && storedUser.email === email && storedUser.password === password) {
-            alert('Sign in successful');
-            // Redirect to account-center.html
-            window.location.href = "/account-center";
-        } else {
-            alert('Invalid email or password');
-        }
+        fetch('/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({ signin: true, username: email, password: password })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Sign in successful');
+                    window.location.href = "/account-center";
+                } else {
+                    alert('Sign in failed: ' + JSON.stringify(data.errors));
+                }
+            })
+            .catch(error => console.error('Error:', error));
     }
 });
 
@@ -56,11 +80,17 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-// Check if user is already signed in
-document.addEventListener('DOMContentLoaded', () => {
-    const storedUser = JSON.parse(sessionStorage.getItem('user'));
-    if (storedUser) {
-        // Redirect to account-center.html if user is signed in
-        window.location.href = "/account-center";
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
     }
-});
+    return cookieValue;
+}

@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from .models import Question, Solution
-from .forms import QuestionForm, SolutionForm
+from .forms import QuestionForm, SolutionForm, SignUpForm, SignInForm
 
+from django.contrib.auth import login as auth_login, authenticate
+from django.contrib.auth.models import User
 
 def main(request):
     template = loader.get_template('main.html')
@@ -67,6 +69,27 @@ def calculus_ask(request):
     }
     return render(request, "calculus-ask.html", context)
   
-def login(request):
-    template = loader.get_template('login.html')
-    return HttpResponse(template.render())
+
+def login_view(request):
+    if request.method == 'POST':
+        if 'signup' in request.POST:
+            form = SignUpForm(request.POST)
+            if form.is_valid():
+                user = form.save()
+                auth_login(request, user)
+                return JsonResponse({'status': 'success'}, status=200)
+            else:
+                return JsonResponse({'status': 'fail', 'errors': form.errors}, status=400)
+        elif 'signin' in request.POST:
+            form = SignInForm(data=request.POST)
+            if form.is_valid():
+                username = form.cleaned_data.get('username')
+                password = form.cleaned_data.get('password')
+                user = authenticate(request, username=username, password=password)
+                if user is not None:
+                    auth_login(request, user)
+                    return JsonResponse({'status': 'success'}, status=200)
+            return JsonResponse({'status': 'fail', 'errors': form.errors}, status=400)
+    else:
+        # 如果是GET請求，渲染login.html模板
+        return render(request, 'login.html')
