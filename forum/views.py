@@ -6,10 +6,11 @@ from .forms import QuestionForm, SolutionForm, SignUpForm, SignInForm
 
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 
 def main(request):
-    template = loader.get_template('main.html')
-    return HttpResponse(template.render())
+    context = {'is_authenticated': request.user.is_authenticated}
+    return render(request, 'main.html', context)
 
 def topics_listing(request):
     template = loader.get_template('topics-listing.html')
@@ -27,10 +28,12 @@ def aboutus(request):
     template = loader.get_template('aboutus.html')
     return HttpResponse(template.render())
 
+@login_required(login_url='/login/')
 def account_center(request):
     template = loader.get_template('account-center.html')
     return HttpResponse(template.render())
 
+@login_required(login_url='/login/')
 def calculus(request):
     questions = Question.objects.all()
 
@@ -50,7 +53,7 @@ def calculus(request):
 
     return render(request, 'calculus.html', {'questions': questions, 'form': form})
 
-
+@login_required(login_url='/login/')
 def calculus_ask(request):    
     # template = loader.get_template('calculus-ask.html')
     form = QuestionForm(request.POST or None)
@@ -72,6 +75,7 @@ def calculus_ask(request):
 
 def login_view(request):
     if request.method == 'POST':
+        next_url = request.POST.get('next', '/account-center')
         if 'signup' in request.POST:
             form = SignUpForm(request.POST)
             if form.is_valid():
@@ -94,7 +98,7 @@ def login_view(request):
                 user = authenticate(request, username=username, password=password)
                 if user is not None:
                     auth_login(request, user)
-                    return JsonResponse({'status': 'success'}, status=200)
+                    return JsonResponse({'status': 'success', 'next': next_url}, status=200)
                 else:
                     return JsonResponse({'status': 'fail', 'errors': {'__all__': [{'message': 'Invalid email or password', 'code': 'invalid_login'}]}}, status=400)
             else:
@@ -102,4 +106,5 @@ def login_view(request):
         else:
             return JsonResponse({'status': 'invalid'}, status=400)
     else:
-        return render(request, 'login.html')
+        next_url = request.GET.get('next', '/account-center')
+        return render(request, 'login.html', {'next': next_url})

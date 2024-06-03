@@ -26,6 +26,7 @@
         <div class="form-container sign-in-container">
             <form id="signInForm" method="POST" action="/login/">
                 {% csrf_token %}
+                <input type="hidden" name="next" id="next" value="{{ next }}">
                 <h1>Sign in</h1>
                 <span>use your NTU email to login</span>
                 <input type="email" id="signInEmail" placeholder="Email" />

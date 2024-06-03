@@ -51,6 +51,7 @@ document.getElementById('signUpButton').addEventListener('click', () => {
 document.getElementById('signInButton').addEventListener('click', () => {
     const email = document.getElementById('signInEmail').value;
     const emailError = document.getElementById('signInEmailError');
+    const next = document.getElementById('next').value;
 
     if (!validateEmail(email)) {
         emailError.textContent = 'Please use an @ntu.edu.tw email address.';
@@ -65,13 +66,13 @@ document.getElementById('signInButton').addEventListener('click', () => {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'X-CSRFToken': getCookie('csrftoken')
             },
-            body: `signin=true&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            body: `signin=true&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&next=${encodeURIComponent(next)}`
         })
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
                     alert('Sign in successful');
-                    window.location.href = "/account-center";
+                    window.location.href = next || "/account-center";
                 } else {
                     const errors = JSON.parse(data.errors);
                     let errorMessage = 'Sign in failed:';

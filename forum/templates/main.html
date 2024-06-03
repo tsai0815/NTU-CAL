@@ -37,7 +37,9 @@
                 </a>
 
                 <div class="d-lg-none ms-auto me-4">
-                    <a href="{% url 'login' %}" class="navbar-icon bi-person smoothscroll"></a>
+                    <a id="profile-icon-mobile" href="#" class="navbar-icon bi-person smoothscroll"
+                        onclick="redirectToLogin('/account-center')"></a>
+
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -69,12 +71,15 @@
                         </li>
                     </ul>
                     <div class="d-none d-lg-block">
-                        <a href="{% url 'login' %}" class="navbar-icon bi-person smoothscroll"></a>
+                        <a id="profile-icon" href="#" class="navbar-icon bi-person smoothscroll"
+                            onclick="redirectToLogin('/account-center')"></a>
+
                     </div>
                 </div>
             </div>
         </nav>
 
+        <div id="user-status" data-authenticated="{{ is_authenticated }}"></div>
 
 
         <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
@@ -767,7 +772,7 @@
             <div class="row">
 
                 <div class="col-lg-3 col-12 mb-4 pb-2">
-                    <a class="navbar-brand mb-2" href={% url 'main' %}>
+                    <a class="navbar-brand mb-2" href="{% url 'main' %}">
                         <i class="bi bi-book-half"></i>
                         <span>NTU Ask</span>
                     </a>
@@ -814,9 +819,7 @@
                 <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            English</button>
-
+                            aria-expanded="false">English</button>
                         <ul class="dropdown-menu">
                             <li><button class="dropdown-item" type="button">Thai</button></li>
 
@@ -826,9 +829,9 @@
                         </ul>
                     </div>
 
-                    <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
+                    <!-- <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
                         <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a>
-                    </p>
+                    </p> -->
 
                 </div>
 
@@ -857,6 +860,33 @@
                 }
             }
             return cookieValue;
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const userStatus = document.getElementById('user-status').dataset.authenticated === 'True';
+            const profileIcon = document.getElementById('profile-icon');
+            const profileIconMobile = document.getElementById('profile-icon-mobile');
+
+            const handleProfileClick = (event) => {
+                event.preventDefault();
+                if (userStatus) {
+                    window.location.href = '/account-center';
+                } else {
+                    window.location.href = '/login';
+                }
+            };
+
+            profileIcon.addEventListener('click', handleProfileClick);
+            profileIconMobile.addEventListener('click', handleProfileClick);
+        });
+    </script>
+    <script>
+        function redirectToLogin(targetUrl) {
+            const isAuthenticated = document.getElementById('user-status').dataset.authenticated === 'True';
+            if (isAuthenticated) {
+                window.location.href = targetUrl;
+            } else {
+                window.location.href = `/login/?next=${encodeURIComponent(targetUrl)}`;
+            }
         }
     </script>
 </body>
