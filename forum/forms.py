@@ -21,5 +21,6 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
-class SignInForm(AuthenticationForm):
-    username = forms.EmailField(label='Email')
+class SignInForm(forms.Form):
+    email = forms.EmailField(label='Email')
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)

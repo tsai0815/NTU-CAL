@@ -25,10 +25,10 @@ document.getElementById('signUpButton').addEventListener('click', () => {
         fetch('/login/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded',
                 'X-CSRFToken': getCookie('csrftoken')
             },
-            body: JSON.stringify({ signup: true, username: name, email: email, password1: password, password2: password })
+            body: `signup=true&username=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&password1=${encodeURIComponent(password)}&password2=${encodeURIComponent(password)}`
         })
             .then(response => response.json())
             .then(data => {
@@ -36,7 +36,12 @@ document.getElementById('signUpButton').addEventListener('click', () => {
                     alert('Sign up successful. Please sign in.');
                     container.classList.remove("right-panel-active");
                 } else {
-                    alert('Sign up failed: ' + JSON.stringify(data.errors));
+                    const errors = JSON.parse(data.errors);
+                    let errorMessage = 'Sign up failed:';
+                    for (const field in errors) {
+                        errorMessage += `\n${field}: ${errors[field].map(error => error.message).join(', ')}`;
+                    }
+                    alert(errorMessage);
                 }
             })
             .catch(error => console.error('Error:', error));
@@ -57,10 +62,10 @@ document.getElementById('signInButton').addEventListener('click', () => {
         fetch('/login/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded',
                 'X-CSRFToken': getCookie('csrftoken')
             },
-            body: JSON.stringify({ signin: true, username: email, password: password })
+            body: `signin=true&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
         })
             .then(response => response.json())
             .then(data => {
@@ -68,7 +73,12 @@ document.getElementById('signInButton').addEventListener('click', () => {
                     alert('Sign in successful');
                     window.location.href = "/account-center";
                 } else {
-                    alert('Sign in failed: ' + JSON.stringify(data.errors));
+                    const errors = JSON.parse(data.errors);
+                    let errorMessage = 'Sign in failed:';
+                    for (const field in errors) {
+                        errorMessage += `\n${field}: ${errors[field].map(error => error.message).join(', ')}`;
+                    }
+                    alert(errorMessage);
                 }
             })
             .catch(error => console.error('Error:', error));

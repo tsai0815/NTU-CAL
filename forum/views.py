@@ -5,7 +5,7 @@ from .models import Question, Solution
 from .forms import QuestionForm, SolutionForm, SignUpForm, SignInForm
 
 from django.contrib.auth import login as auth_login, authenticate
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 def main(request):
     template = loader.get_template('main.html')
@@ -79,17 +79,27 @@ def login_view(request):
                 auth_login(request, user)
                 return JsonResponse({'status': 'success'}, status=200)
             else:
-                return JsonResponse({'status': 'fail', 'errors': form.errors}, status=400)
+                return JsonResponse({'status': 'fail', 'errors': form.errors.as_json()}, status=400)
         elif 'signin' in request.POST:
-            form = SignInForm(data=request.POST)
+            form = SignInForm(request.POST)
             if form.is_valid():
-                username = form.cleaned_data.get('username')
+                email = form.cleaned_data.get('email')
                 password = form.cleaned_data.get('password')
+                User = get_user_model()
+                try:
+                    username = User.objects.get(email=email).username
+                except User.DoesNotExist:
+                    return JsonResponse({'status': 'fail', 'errors': {'__all__': [{'message': 'Invalid email or password', 'code': 'invalid_login'}]}}, status=400)
+
                 user = authenticate(request, username=username, password=password)
                 if user is not None:
                     auth_login(request, user)
                     return JsonResponse({'status': 'success'}, status=200)
-            return JsonResponse({'status': 'fail', 'errors': form.errors}, status=400)
+                else:
+                    return JsonResponse({'status': 'fail', 'errors': {'__all__': [{'message': 'Invalid email or password', 'code': 'invalid_login'}]}}, status=400)
+            else:
+                return JsonResponse({'status': 'fail', 'errors': form.errors.as_json()}, status=400)
+        else:
+            return JsonResponse({'status': 'invalid'}, status=400)
     else:
-        # 如果是GET請求，渲染login.html模板
         return render(request, 'login.html')
