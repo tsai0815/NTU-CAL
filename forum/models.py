@@ -10,9 +10,14 @@ class Question(models.Model):
     def __str__(self):
         return f"{self.title} {self.category} {self.description}"
 
+
+    
 class Solution(models.Model):
     description = models.CharField(max_length=300)
     question = models.ForeignKey(Question, related_name='solutions', on_delete=models.CASCADE, null=True)
+    likes = models.ManyToManyField(Question , related_name="post")
 
     def __str__(self):
         return f"{self.description} {self.question}"
+
+    

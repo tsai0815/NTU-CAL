@@ -406,3 +406,20 @@ footer {
 		color: var(--primary-color);
     }
 }
+
+.like-container{
+	width: 100px;
+	height: auto;
+	padding: 10px 10px 10px 10px;
+	display: flex;
+	align-items:center;
+	justify-content: space-between;
+	flex-direction: column;
+	margin-bottom: 10px;
+
+}
+
+.like-container button{
+background: none;
+border: none;
+}

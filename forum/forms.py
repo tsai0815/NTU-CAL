@@ -12,5 +12,3 @@ class SolutionForm(forms.ModelForm):
     class Meta:
         model = Solution
         fields = ['description'] 
-
-
