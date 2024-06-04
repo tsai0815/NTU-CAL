@@ -1,0 +1,65 @@
+body {
+  background-image: url('../images/gidle.png');
+  background-repeat: repeat; /* 背景圖片重複 */
+  background-size: cover; /* 背景圖片覆蓋整個頁面 */
+  background-position: center; /* 背景圖片置中 */
+}
+
+form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* 確保表單位於 body 背景之上 */
+
+    width: 800px; /* 調整表單寬度 */
+    margin: 0 auto; /* 將表單置中 */
+    padding: 20px; /* 為表單添加內部間距 */
+    border: 1px solid #ccc; /* 添加邊框 */
+    border-radius: 5px; /* 添加圓角 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影 */
+    background-color: white;
+}
+  
+  /* 標題樣式 */
+  h1 {
+    text-align: center; /* 將標題置中 */
+    margin-bottom: 20px; /* 添加標題下方間距 */
+  }
+  
+  /* 輸入框樣式 */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    width: 100%; /* 輸入框佔滿寬度 */
+    padding: 10px; /* 添加輸入框內部間距 */
+    margin-bottom: 10px; /* 添加輸入框下方間距 */
+    border: 1px solid #ccc; /* 添加邊框 */
+    border-radius: 3px; /* 添加圓角 */
+    box-sizing: border-box; /* 包含邊框寬度 */
+  }
+
+  
+  /* 提交按鈕樣式 */
+  input[type="submit"] {
+    background-color: #80d0c7; /* 藍色背景 */
+    color: white; /* 白色文字 */
+    padding: 10px 20px; /* 添加按鈕內部間距 */
+    border: none; /* 移除邊框 */
+    border-radius: 3px; /* 添加圓角 */
+    cursor: pointer; /* 滑鼠移至按鈕時變為指針樣式 */
+  }
+  
+  /* 表單標籤樣式 */
+  label {
+    display: block; /* 標籤佔滿一行 */
+    margin-bottom: 5px; /* 添加標籤下方間距 */
+    font-weight: bold; /* 加粗標籤文字 */
+  }
+  
+  /* 錯誤訊息樣式 */
+  .error {
+    color: red; /* 錯誤訊息為紅色 */
+  }
+  

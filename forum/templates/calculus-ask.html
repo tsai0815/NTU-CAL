@@ -4,30 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Ask a Question</title>
-    {% comment %} <style>
-        .post-title {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .category {
-            font-size: 20px;
-            color: #666;
-        }
-        .post-date {
-            font-size: 14px;
-            color: #999;
-        }
-        .post-description {
-            font-size: 16px;
-            color: #333;
-        }
-        .delete-post, .load-more {
-            margin-top: 10px;
-            cursor: pointer;
-            color: #007bff;
-        } {% endcomment %}
-    </style>
+    <link href="{% static 'css/calculus_ask_styles.css' %}" rel="stylesheet">
 </head>
+
 <body>
     <h1>Ask a Question</h1>
     <form method="POST" action="" enctype="multipart/form-data"> 
@@ -35,24 +14,5 @@
         {{ form.as_p }}
         <input type="submit" value="ask">
     </form>
-    {% comment %} <h2>Questions</h2>
-    <div id="questions">
-        {% for question in questions %}
-            <div class="question">
-                <h1 class="post-title" data-title="{{ question.title }}" 
-                    data-date="{{ question.date_posted|date:'Y-m-d H:i:s' }}"
-                    data-description="{{ question.description }}"> 
-                    {{ question.title }}</h1><br>
-                
-                <h2 class="category">{{ question.category }}</h2><br>
-                <span class="post-date">{{ question.date_posted|date:'Y-m-d H:i:s' }}</span>
-                <p class="post-description">{{ question.description|truncatechars:100 }}</p>
-                <button class="delete-post" data-title="{{ question.title }}">Delete</button>
-                <span class="load-more" data-title="{{ question.title }}"
-                    data-date="{{ question.date_posted|date:'Y-m-d H:i:s' }}"
-                    data-description="{{ question.description }}">Load more</span>
-            </div>
-        {% endfor %}    
-    </div>{% endcomment %}
 </body>
 </html>
