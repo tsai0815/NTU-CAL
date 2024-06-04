@@ -36,22 +36,31 @@ def account_center(request):
 @login_required(login_url='/login/')
 def calculus(request):
     questions = Question.objects.all()
+    form = SolutionForm(request.POST)
 
-    form = SolutionForm(request.POST, request.FILES)
     if form.is_valid():
         # obj = Solution.objects.create(
         #     description = form.cleaned_data.get('description'),
         #     question = form.cleaned_data.get('question')
         # )
+        
         solution = form.save(commit=False)
         question_id = request.POST.get('question_id')
         solution.question_id = question_id
+
+        like_action = request.POST.get('like_action')
+        if like_action:
+            if like_action == 'like':
+                solution.likes.add(request.user)
+            elif like_action == 'dislike':
+                solution.dislikes.add(request.user)
+
         solution.save()
         return redirect('calculus')
     else:
         print(form.errors)
-
     return render(request, 'calculus.html', {'questions': questions, 'form': form})
+
 
 @login_required(login_url='/login/')
 def calculus_ask(request):    
