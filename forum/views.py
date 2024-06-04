@@ -75,7 +75,7 @@ def calculus_ask(request):
 
 def login_view(request):
     if request.method == 'POST':
-        next_url = request.POST.get('next', '/account-center')
+        next_url = request.POST.get('next', '/calculus')
         if 'signup' in request.POST:
             form = SignUpForm(request.POST)
             if form.is_valid():
@@ -106,5 +106,5 @@ def login_view(request):
         else:
             return JsonResponse({'status': 'invalid'}, status=400)
     else:
-        next_url = request.GET.get('next', '/account-center')
+        next_url = request.GET.get('next', '/calculus')
         return render(request, 'login.html', {'next': next_url})
