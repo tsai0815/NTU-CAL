@@ -13,7 +13,8 @@ form {
     z-index: 10; /* 確保表單位於 body 背景之上 */
 
     width: 800px; /* 調整表單寬度 */
-    margin: 0 auto; /* 將表單置中 */
+    margin-left: 0; 
+  
     padding: 20px; /* 為表單添加內部間距 */
     border: 1px solid #ccc; /* 添加邊框 */
     border-radius: 5px; /* 添加圓角 */
