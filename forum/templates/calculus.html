@@ -28,6 +28,11 @@
                 <h3>Category: {{ q.category }}</h3>
                 <h3>Description: </h3>
                 <p>{{q.description}}</p>
+
+                {% if q.image %}
+                    <img src="{{ q.image.url }}" alt="Question Image" style="max-width: 400px;">
+                {% endif %}
+                
                 <br>
                 <p>Published Date: {{ q.published_date|date:"Y-m-d" }}</p>
                 <br>
@@ -36,7 +41,11 @@
                     {% for sol in q.solutions.all %}
                         <div class="post-box">
                         <li>{{ sol.description }}</li>
-                        <p> </p>
+                        <br>
+                        {% if sol.image %}
+                            <img src="{{ sol.image.url }}" alt="Solution Image" style="max-width: 400px;">
+                        {% endif %}
+                        
                         <div class="like-container">
                             <form action = " ">
                                 {% csrf_token %}
@@ -61,7 +70,7 @@
                 <br>
                 <hr>
                 <h3>Your answer:</h3>
-                <form method="POST" action="">
+                <form method="POST" action="" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
                     {% comment %} Automatically assign the question for the solution to point to{% endcomment %}
