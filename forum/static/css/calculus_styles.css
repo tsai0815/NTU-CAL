@@ -36,7 +36,6 @@
 
 
 
-
 body { 
 	background-color: var(--white-color);
 	font-family: var(--body-font-family); 
@@ -111,7 +110,36 @@ footer {
 	/* text-align: left;  */
 	padding: 15px; 
 	margin: 15px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 } 
+
+.reply-form {
+	margin-left: 0;
+	width: 95%;  /* Adjust width as needed */
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%; /* 輸入框佔滿寬度 */
+  padding: 10px; /* 添加輸入框內部間距 */
+  margin-bottom: 10px; /* 添加輸入框下方間距 */
+  border: 1px solid #ccc; /* 添加邊框 */
+  border-radius: 3px; /* 添加圓角 */
+  box-sizing: border-box; /* 包含邊框寬度 */
+}
+input[type="submit"] {
+    background-color: #80d0c7; /* 藍色背景 */
+    color: white; /* 白色文字 */
+    padding: 10px 20px; /* 添加按鈕內部間距 */
+    border: none; /* 移除邊框 */
+    border-radius: 3px; /* 添加圓角 */
+    cursor: pointer; /* 滑鼠移至按鈕時變為指針樣式 */
+}
 
 .category { 
 	/* background-color: #3498db;  */

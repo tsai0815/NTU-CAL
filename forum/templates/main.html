@@ -55,12 +55,12 @@
                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_2">Ask questions</a>
                         </li>
-                        <li class="nav-item">
+                        {% comment %} <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_3">How it works</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_4">FAQs</a>
-                        </li>
+                        </li> {% endcomment %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Others</a>
@@ -91,7 +91,7 @@
 
                         <h6 class="text-center">actually Dealine, Laziness and Emo</h6>
 
-                        <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+                        {% comment %} <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-text bi-search" id="basic-addon1">
 
@@ -102,7 +102,7 @@
 
                                 <button type="submit" class="form-control">Search</button>
                             </div>
-                        </form>
+                        </form> {% endcomment %}
                     </div>
 
                 </div>
@@ -124,7 +124,7 @@
                                         <p class="mb-0">Post a question for your classmates to help you answer.</p>
                                     </div>
 
-                                    <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                    <span class="badge bg-design rounded-pill ms-auto">: )</span>
                                 </div>
 
                                 <img src="{% static 'images/help.png' %}" class="custom-block-image img-fluid" alt="">
@@ -152,27 +152,19 @@
                                             More</a>
                                     </div>
 
-                                    <span class="badge bg-finance rounded-pill ms-auto">25</span>
+                                    <span class="badge bg-finance rounded-pill ms-auto">: (</span>
                                 </div>
 
                                 <div class="social-share d-flex">
-                                    <p class="text-white me-4">Share:</p>
+                                    <p class="text-white me-4">Emo together:</p>
 
                                     <ul class="social-icon">
                                         <li class="social-icon-item">
-                                            <a href="#" class="social-icon-link bi-twitter"></a>
-                                        </li>
-
-                                        <li class="social-icon-item">
-                                            <a href="#" class="social-icon-link bi-facebook"></a>
-                                        </li>
-
-                                        <li class="social-icon-item">
-                                            <a href="#" class="social-icon-link bi-pinterest"></a>
+                                            <a href="https://www.facebook.com/groups/ntucsieb12/" class="social-icon-link bi-facebook"></a>
                                         </li>
                                     </ul>
 
-                                    <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
+                                    {% comment %} <a href="#" class="custom-icon bi-bookmark ms-auto"></a> {% endcomment %}
                                 </div>
 
                                 <div class="section-overlay"></div>
@@ -250,7 +242,7 @@
                                                         <p class="mb-0">Problems in testbooks</p>
                                                     </div>
 
-                                                    <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                                    <span class="badge bg-design rounded-pill ms-auto">?</span>
                                                 </div>
 
                                                 <img src={% static "images/topics/calculus-textbook.png" %}
@@ -269,7 +261,7 @@
                                                         <p class="mb-0">Remeber to submit before deadlines</p>
                                                     </div>
 
-                                                    <span class="badge bg-design rounded-pill ms-auto">75</span>
+                                                    <span class="badge bg-design rounded-pill ms-auto">?</span>
                                                 </div>
 
                                                 <img src="{% static 'images/topics/ntu-cool-hw.png' %}"
@@ -289,7 +281,7 @@
                                                         <p class="mb-0">aka微波</p>
                                                     </div>
 
-                                                    <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                                    <span class="badge bg-design rounded-pill ms-auto">?</span>
                                                 </div>
 
                                                 <img src="{% static 'images/topics/webwork.png' %}"
@@ -554,7 +546,7 @@
         </section>
 
 
-        <section class="timeline-section section-padding" id="section_3">
+        {% comment %} <section class="timeline-section section-padding" id="section_3">
             <div class="section-overlay"></div>
 
             <div class="container">
@@ -696,7 +688,7 @@
 
                 </div>
             </div>
-        </section>
+        </section> {% endcomment %}
 
 
         {% comment %} <section class="contact-section section-padding section-bg" id="section_5">
@@ -787,16 +779,16 @@
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">How it works</a>
+                            <a href="#section_2" class="site-footer-link">Ask questions</a>
                         </li>
 
-                        <li class="site-footer-link-item">
+                        {% comment %} <li class="site-footer-link-item">
                             <a href="#" class="site-footer-link">FAQs</a>
-                        </li>
+                        </li> {% endcomment %}
 
-                        <li class="site-footer-link-item">
+                        {% comment %} <li class="site-footer-link-item">
                             <a href="#" class="site-footer-link">Contact</a>
-                        </li>
+                        </li> {% endcomment %}
                     </ul>
                 </div>
 
@@ -805,13 +797,13 @@
 
                     <p class="text-white d-flex mb-1">
                         <a href="tel: 305-240-9671" class="site-footer-link">
-                            305-240-9671
+                            
                         </a>
                     </p>
 
                     <p class="text-white d-flex">
-                        <a href="mailto:info@company.com" class="site-footer-link">
-                            info@company.com
+                        <a href="mailto:b12902999@ntu.edu.tw" class="site-footer-link">
+                            b12902999@ntu.edu.tw
                         </a>
                     </p>
                 </div>
@@ -819,13 +811,13 @@
                 <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">English</button>
+                            aria-expanded="false">US English</button>
                         <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Thai</button></li>
+                            <li><button class="dropdown-item" type="button">UK English</button></li>
 
-                            <li><button class="dropdown-item" type="button">Myanmar</button></li>
+                            <li><button class="dropdown-item" type="button">Canada English</button></li>
 
-                            <li><button class="dropdown-item" type="button">Arabic</button></li>
+                            <li><button class="dropdown-item" type="button">Australia English</button></li>
                         </ul>
                     </div>
 

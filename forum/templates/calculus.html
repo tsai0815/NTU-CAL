@@ -28,14 +28,13 @@
                 <h3>Category: {{ q.category }}</h3>
                 <h3>Description: </h3>
                 <p>{{q.description}}</p>
-
+                <br>
                 {% if q.image %}
                     <img src="{{ q.image.url }}" alt="Question Image" style="max-width: 400px;">
                 {% endif %}
-                
+                <br>
                 <br>
                 <p>Published Date: {{ q.published_date|date:"Y-m-d" }}</p>
-                <br>
                 <h3>Replies:</h3>
                 <ul>
                     {% for sol in q.solutions.all %}
@@ -70,7 +69,7 @@
                 <br>
                 <hr>
                 <h3>Your answer:</h3>
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="" enctype="multipart/form-data" class="reply-form left-aligned-form">
                     {% csrf_token %}
                     {{ form.as_p }}
                     {% comment %} Automatically assign the question for the solution to point to{% endcomment %}

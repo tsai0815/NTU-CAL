@@ -1,13 +1,13 @@
 body {
   background-image: url('../images/gidle.png');
-  background-repeat: repeat; /* 背景圖片重複 */
-  background-size: cover; /* 背景圖片覆蓋整個頁面 */
-  background-position: center; /* 背景圖片置中 */
+  /* background-repeat: repeat;  */
+  background-size:cover;
+  background-position: top;
 }
 
 form {
     position: fixed;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10; /* 確保表單位於 body 背景之上 */
