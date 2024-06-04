@@ -37,7 +37,7 @@ def account_center(request):
 def calculus(request):
     questions = Question.objects.all()
 
-    form = SolutionForm(request.POST)
+    form = SolutionForm(request.POST, request.FILES)
     if form.is_valid():
         # obj = Solution.objects.create(
         #     description = form.cleaned_data.get('description'),

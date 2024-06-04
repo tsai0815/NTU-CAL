@@ -17,6 +17,7 @@ class Solution(models.Model):
     question = models.ForeignKey(Question, related_name='solutions', on_delete=models.CASCADE, null=True)
     likes = models.ManyToManyField(User , related_name="liked")
     dislikes = models.ManyToManyField(User , related_name="disliked")
+    image = models.ImageField(upload_to='images_uploaded_sol/', null=True, blank=True)
     
     def __str__(self):
         return f"{self.description} {self.question}"
