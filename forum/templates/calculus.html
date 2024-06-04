@@ -28,6 +28,11 @@
                 <h3>Category: {{ q.category }}</h3>
                 <h3>Description: </h3>
                 <p>{{q.description}}</p>
+
+                {% if q.image %}
+                    <img src="{{ q.image.url }}" alt="Question Image" style="max-width: 400px;">
+                {% endif %}
+                
                 <br>
                 <p>Published Date: {{ q.published_date|date:"Y-m-d" }}</p>
                 <br>

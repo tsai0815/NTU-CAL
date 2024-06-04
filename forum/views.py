@@ -56,13 +56,14 @@ def calculus(request):
 @login_required(login_url='/login/')
 def calculus_ask(request):    
     # template = loader.get_template('calculus-ask.html')
-    form = QuestionForm(request.POST or None)
+    form = QuestionForm(request.POST or None, request.FILES or None)
     
     if form.is_valid():
         obj = Question.objects.create(
             title = form.cleaned_data.get('title'),
             category = form.cleaned_data.get('category'),
-            description = form.cleaned_data.get('description')
+            description = form.cleaned_data.get('description'),
+            image = form.cleaned_data.get('image')
         )
         return redirect('calculus')
 
