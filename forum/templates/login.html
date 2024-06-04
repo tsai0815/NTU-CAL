@@ -12,7 +12,8 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form id="signUpForm">
+            <form id="signUpForm" method="POST" action="/login/">
+                {% csrf_token %}
                 <h1>Create Account</h1>
                 <span>use your ntu email for registration</span>
                 <input type="text" id="signUpName" placeholder="Name" name="name_fake" />
@@ -23,7 +24,9 @@
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form id="signInForm">
+            <form id="signInForm" method="POST" action="/login/">
+                {% csrf_token %}
+                <input type="hidden" name="next" id="next" value="{{ next }}">
                 <h1>Sign in</h1>
                 <span>use your NTU email to login</span>
                 <input type="email" id="signInEmail" placeholder="Email" />

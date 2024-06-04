@@ -22,16 +22,36 @@ document.getElementById('signUpButton').addEventListener('click', () => {
         const name = document.getElementById('signUpName').value;
         const password = document.getElementById('signUpPassword').value;
 
-        // Store user data in sessionStorage
-        sessionStorage.setItem('user', JSON.stringify({ name, email, password }));
-        alert('Sign up successful. Please sign in.');
-        container.classList.remove("right-panel-active");
+        fetch('/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: `signup=true&username=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&password1=${encodeURIComponent(password)}&password2=${encodeURIComponent(password)}`
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Sign up successful. Please sign in.');
+                    container.classList.remove("right-panel-active");
+                } else {
+                    const errors = JSON.parse(data.errors);
+                    let errorMessage = 'Sign up failed:';
+                    for (const field in errors) {
+                        errorMessage += `\n${field}: ${errors[field].map(error => error.message).join(', ')}`;
+                    }
+                    alert(errorMessage);
+                }
+            })
+            .catch(error => console.error('Error:', error));
     }
 });
 
 document.getElementById('signInButton').addEventListener('click', () => {
     const email = document.getElementById('signInEmail').value;
     const emailError = document.getElementById('signInEmailError');
+    const next = document.getElementById('next').value;
 
     if (!validateEmail(email)) {
         emailError.textContent = 'Please use an @ntu.edu.tw email address.';
@@ -39,15 +59,30 @@ document.getElementById('signInButton').addEventListener('click', () => {
     } else {
         emailError.textContent = '';
         const password = document.getElementById('signInPassword').value;
-        const storedUser = JSON.parse(sessionStorage.getItem('user'));
 
-        if (storedUser && storedUser.email === email && storedUser.password === password) {
-            alert('Sign in successful');
-            // Redirect to account-center.html
-            window.location.href = "/account-center";
-        } else {
-            alert('Invalid email or password');
-        }
+        fetch('/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: `signin=true&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&next=${encodeURIComponent(next)}`
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Sign in successful');
+                    window.location.href = next || "/account-center";
+                } else {
+                    const errors = JSON.parse(data.errors);
+                    let errorMessage = 'Sign in failed:';
+                    for (const field in errors) {
+                        errorMessage += `\n${field}: ${errors[field].map(error => error.message).join(', ')}`;
+                    }
+                    alert(errorMessage);
+                }
+            })
+            .catch(error => console.error('Error:', error));
     }
 });
 
@@ -56,11 +91,17 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-// Check if user is already signed in
-document.addEventListener('DOMContentLoaded', () => {
-    const storedUser = JSON.parse(sessionStorage.getItem('user'));
-    if (storedUser) {
-        // Redirect to account-center.html if user is signed in
-        window.location.href = "/account-center";
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
     }
-});
+    return cookieValue;
+}
