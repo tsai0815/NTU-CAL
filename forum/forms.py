@@ -12,7 +12,7 @@ class SolutionForm(forms.ModelForm):
 
     class Meta:
         model = Solution
-        fields = ['description'] 
+        fields = ['description']
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(required=True)

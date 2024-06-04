@@ -406,3 +406,33 @@ footer {
 		color: var(--primary-color);
     }
 }
+
+.like-container{
+	width: 100px;
+	height: auto;
+	padding: 1px 10px 10px 10px;
+	display: flex;
+	align-items:flex-end;
+	justify-content: flex-start;
+	flex-direction: column;
+	margin-bottom: 10px;
+
+}
+
+.like-container button{
+background: none;
+border: none;
+}
+
+
+.like-count,
+.dislike-count {
+    display: flex;
+    align-items: center;
+	margin-bottom: 5px;
+}
+
+.like-count svg,
+.dislike-count svg {
+    margin-left: 5px;
+}
