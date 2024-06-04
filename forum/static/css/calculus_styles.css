@@ -410,10 +410,10 @@ footer {
 .like-container{
 	width: 100px;
 	height: auto;
-	padding: 10px 10px 10px 10px;
+	padding: 1px 10px 10px 10px;
 	display: flex;
-	align-items:center;
-	justify-content: space-between;
+	align-items:flex-end;
+	justify-content: flex-start;
 	flex-direction: column;
 	margin-bottom: 10px;
 
@@ -422,4 +422,17 @@ footer {
 .like-container button{
 background: none;
 border: none;
+}
+
+
+.like-count,
+.dislike-count {
+    display: flex;
+    align-items: center;
+	margin-bottom: 5px;
+}
+
+.like-count svg,
+.dislike-count svg {
+    margin-left: 5px;
 }
