@@ -36,7 +36,7 @@ def account_center(request):
 @login_required(login_url='/login/')
 def calculus(request):
     questions = Question.objects.all()
-    form = SolutionForm(request.POST)
+    form = SolutionForm(request.POST, request.FILES)
 
     if form.is_valid():
         # obj = Solution.objects.create(
