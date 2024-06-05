@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from .models import Question, Solution
@@ -36,22 +36,37 @@ def account_center(request):
 @login_required(login_url='/login/')
 def calculus(request):
     questions = Question.objects.all()
-
     form = SolutionForm(request.POST, request.FILES)
+    if request.method == 'POST':
+        like_action = request.POST.get('like_action')
+        solution_id = request.POST.get('solution_id')
+        if like_action and solution_id:
+            solution = get_object_or_404(Solution, id=solution_id)
+            if like_action == 'like':
+                if request.user in solution.dislikes.all():
+                    solution.dislikes.remove(request.user)
+                solution.likes.add(request.user)
+            if like_action == 'dislike':
+                if request.user in solution.likes.all():
+                    solution.likes.remove(request.user)
+                solution.dislikes.add(request.user)
+            
     if form.is_valid():
         # obj = Solution.objects.create(
         #     description = form.cleaned_data.get('description'),
         #     question = form.cleaned_data.get('question')
         # )
+        
         solution = form.save(commit=False)
         question_id = request.POST.get('question_id')
         solution.question_id = question_id
+
         solution.save()
         return redirect('calculus')
     else:
         print(form.errors)
-
     return render(request, 'calculus.html', {'questions': questions, 'form': form})
+
 
 @login_required(login_url='/login/')
 def calculus_ask(request):    
