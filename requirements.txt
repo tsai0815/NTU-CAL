@@ -25,7 +25,7 @@ fonttools==4.53.0
 gmpy2==2.1.5
 # -e git://chromium.googlesource.com/external/gyp
 h11==0.14.0
-httplib2==0.20.2
+httplib2==0.32.0
 idna==3.7
 importlib-metadata==4.6.4
 jeepney==0.7.1
