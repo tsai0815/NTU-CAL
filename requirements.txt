@@ -6,7 +6,7 @@ charset-normalizer==3.3.2
 # command-not-found==0.3
 contourpy==1.2.1
 crypto==1.4.1
-cryptography==3.4.8
+cryptography==50.0.0
 cycler==0.12.1
 dbus-python==1.2.18
 distlib==0.3.4
